@@ -1,1 +1,222 @@
-"Hello World" 
+
+<!DOCTYPE HTML>
+<html>
+	  <head>
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/styles.css">
+        <link rel="icon" href="">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <title>FluencyForge
+
+</title>
+
+
+        
+
+<link rel="stylesheet" href="/static/css/styles.css">
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+
+
+	  </head>
+	  <body>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                    <!-- <ul class="nav navbar-nav navbar-left">
+                      <li><a href="#">Left Link</a></li>
+                    </ul> -->
+                    <ul class="nav navbar-nav text-center">
+                        <li>
+                            <a href="/">
+                                <img class="logo" src="/static/img/logo.jpg">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/about">
+                                About
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- <ul class="nav navbar-nav navbar-right">
+                      <li><a href="#">Right Link</a></li>
+                    </ul> -->
+                </div>
+            </div>
+		    </nav>
+	
+        
+
+<div class="container">
+    <h1 style="margin-top: 7%;"><b>FluencyForge</b></h1>
+    <p><b>Ethan Schillinger</b>, <b>H. Jacob Schenck</b>, <b>Joseph Vossel</b></p>
+    <hr>
+    <p>
+        FluencyForge is designed to help people improve their foreign language skills by leveraging powerful technology that has been recently developed.
+        We adhere to a standard unit structure to provide a familiar organization for users that includes vocabulary, grammar, and quizzes.
+        FluencyForge builds upon the units by giving users the opportunity to practice the most important aspect of language: conversation.
+        Learning a language goes beyond just building up a base of vocabulary and memorizing rules; it is important to regularly form your own thoughts and ideas.
+        Using OpenAI's GPT language models, you can find specialized scenarios in each unit, like ordering food at a restaurant or asking for help finding products at a store.
+        We hope that you find this to be a useful tool as you craft your own language skills!
+        At the moment, only Russian is (partially) supported, with the unit content closely reflecting that of the first <em>Голоса</em> book.
+    </p>
+    <br>
+    <h2>
+        <b>
+            Project Goals
+        </b>
+    </h2>
+    <hr>
+    <p>
+        <ul>
+            <li>
+                Create an app framework around the unit system
+                <ul>
+                    <li>
+                        Vocabulary lists
+                    </li>
+                    <li>
+                        Grammar section
+                    </li>
+                    <li>
+                        Flash cards
+                    </li>
+                    <li>
+                        Quizzes
+                    </li>
+                    <li>
+                        Cross-language dictionary
+                    </li>
+                    <li>
+                        Conversations
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Provide specialized unit-based conversation scenarios
+                <ul>
+                    <li>
+                        Provide grammatically-correct, on-topic responses
+                    </li>
+                    <li>
+                        Respond according to the unit scenario
+                    </li>
+                    <li>
+                        Provide grades for user responses
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Create a user profile system
+                <ul>
+                    <li>
+                        Store progress/grades
+                    </li>
+                    <li>
+                        Create custom flash cards/quiz questions
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </p>
+    <br>
+    <h2>
+        <b>
+            Tools/APIs/Frameworks
+        </b>
+    </h2>
+    <hr>
+    <h3 style="font-size: 22px;">
+        <b>
+            Flask
+        </b>
+    </h3>
+    <p>
+        FluencyForge's backend is supported by Flask and Socket.IO, two libraries in Python that are used to host web apps.
+        Flask allows for routes that are used to navigate across webpages, while maintaining session data throughout.
+        This helps keep track of information like the user's chosen native and target languages, as well as which unit the user is working on for conversation scenario prompting.
+        Flask also makes use of another library called Jinja to provide consistent webpage layouts that may be extended by other HTML documents; this is especially useful when dealing with universal elements like navigation bars.
+    </p>
+    <br>
+    <h3 style="font-size: 22px;">
+        <b>
+            Socket.IO
+        </b>
+    </h3>
+    <p>
+        Socket.IO enables us to create a seamless chat environment with a cycle of calls to <em>emit()</em> and <em>on()</em>.
+        The backend Python application waits to receive a user message, at which point the message is to be passed to the GPT API.
+        Once a response is generated, the application emits the response and the grade for the user's previous message.
+        These items are then immediately displayed on the screen, without the need to refresh the webpage.
+    </p>
+    <br>
+    <h3 style="font-size: 22px;">
+        <b>
+            Bootstrap
+        </b>
+    </h3>
+    <p>
+        Bootstrap makes managing the CSS throughout the webpage substantially easier.
+        We can leverage the pre-existing CSS classes not only to create a more visually-appealing design, but also provide better functionality.
+        These features are most apparent in the chat window.
+        Detailed grade breakdowns are provided via modals when letter grades are clicked.
+        We also make use of Bootstrap's tooltips to easily and cleanly view message translations within conversations.
+    </p>
+    <br>
+    <h3 style="font-size: 22px;">
+        <b>
+            OpenAI GPT3.5 API
+        </b>
+    </h3>
+    <p>
+        The core functionality of the conversations will be controlled by OpenAI's GPT API.
+        OpenAI provides a library in Python to make use of their language models; this is the perfect application of such models, as realistic conversational data is required in the use case of improving human language learning.
+        While we have determined the prompts required to tailor the model's functionality to our specific use cases, we have not yet implemented them programmatically via API calls.
+        This is, naturally, our top priority for Sprint 3.
+        Unfortunately, the models are locked behind a slight paywall, but it is a small price to pay to meet our end goals.
+    </p>
+    <br>
+    <h2>
+        <b>
+            User Experience
+        </b>
+    </h2>
+    <hr>
+    <p style="margin-bottom: 7%;">
+        A user is first greeted with a form to input both their native language and the language which they are trying to learn.
+        Upon submitting this information, there is a very visually pleasing unit selection screen, with each panel presenting the focus of the unit.
+        Navigation bars are located along the top of the screen, allowing the user to easily traverse the website to the desired page at any moment.
+        The user can click on whichever unit they would like to begin learning and/or practicing.
+        The main unit page is introductory.
+        At this point, the navigation bar adjusts to fit the unit content framework, presenting tabs including (but not limited to): a cross-language dictionary, the vocab and grammar of the unit, flash cards, quizzes, and the chat functionality.
+        The dictionary tab will include a sizeable cross-language dictionary, which the user will be able to search in both languages.
+        The vocabulary tab includes only the vocab directly relevant to the currently-selected unit.
+        The grammar quiz will contain verbs and grammatical concepts that pertain to the topics covered in the unit.
+        Flash cards provide an interactive way to test the user's command over the unit vocabulary.
+        These keep track of the terms that the user has missed and provides an opportunity to review them again at the end of the list.
+        Finally, the user can access the conversation tab.
+        The screen models a chat window in which the user is presented with a greeting message that will be tailored to the current unit.
+        For example, an example conversation for the <em>Restaurant</em> unit could be one between the user and a waiter who is taking their order.
+        With each message sent, a response will be generated, and a grade for the user's message will be provided.
+        The user will see this grade at a glance in the form of a standard letter grade, located to the left of the message.
+        The grade can then be clicked to view specific grading details, broken down by spelling and grammar (and potentially coherence as well).
+        There will be a short message explaining the reasoning behind the grades in each category.
+        If a user does not fully understand the response sent (they are learning, after all), the translation can be viewed by simply hovering over the message.
+        At any point, one can select a different unit or section within the unit.
+    </p>
+    
+    
+  
+
+
+	  </body>
+</html>
