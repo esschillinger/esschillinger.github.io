@@ -4,7 +4,7 @@
 	  <head>
 		<link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="/static/css/styles.css">
         <link rel="icon" href="">
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,13 +17,43 @@
 
         
 
+<link rel="stylesheet" href="/static/css/styles.css">
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
 
 
 	  </head>
 	  <body>
-        
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                    <!-- <ul class="nav navbar-nav navbar-left">
+                      <li><a href="#">Left Link</a></li>
+                    </ul> -->
+                    <ul class="nav navbar-nav text-center">
+                        <li>
+                            <a href="/">
+                                <img class="logo" src="/static/img/logo.jpg">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/about">
+                                About
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- <ul class="nav navbar-nav navbar-right">
+                      <li><a href="#">Right Link</a></li>
+                    </ul> -->
+                </div>
+            </div>
+		    </nav>
+	
         
 
 <div class="container">
@@ -32,13 +62,21 @@
     <hr>
     <p>
         FluencyForge is designed to help people improve their foreign language skills by leveraging powerful technology that has been recently developed.
-        We adhere to a standard unit structure to provide a familiar organization for users that includes vocabulary, grammar, and quizzes.
+        We adhere to a standard unit structure to provide a familiar organization for users that includes vocabulary, grammar, and exercises.
         FluencyForge builds upon the units by giving users the opportunity to practice the most important aspect of language: conversation.
         Learning a language goes beyond just building up a base of vocabulary and memorizing rules; it is important to regularly form your own thoughts and ideas.
         Using OpenAI's GPT language models, you can find specialized scenarios in each unit, like ordering food at a restaurant or asking for help finding products at a store.
         We hope that you find this to be a useful tool as you craft your own language skills!
         At the moment, only Russian is (partially) supported, with the unit content closely reflecting that of the first <em>Голоса</em> book.
     </p>
+    <br>
+    <h2>
+        <b>
+            Sprint 3 Presentation
+        </b>
+    </h2>
+    <hr>
+    <iframe src="Sprint 3 Video Presentation.mp4" style="margin: auto; width: 960px; height: 540px;"></iframe>
     <br>
     <h2>
         <b>
@@ -52,36 +90,36 @@
                 Create an app framework around the unit system
                 <ul>
                     <li>
-                        Vocabulary lists
+                        Vocabulary lists [DONE]
                     </li>
                     <li>
-                        Grammar section
+                        Grammar lessons
                     </li>
                     <li>
-                        Flash cards
+                        Flash cards [DONE]
                     </li>
                     <li>
-                        Quizzes
+                        Exercises [DONE]
                     </li>
                     <li>
-                        Cross-language dictionary
+                        Cross-language dictionary [DONE]
                     </li>
                     <li>
-                        Conversations
+                        Targeted Conversations [DONE]
                     </li>
                 </ul>
             </li>
             <li>
-                Provide specialized unit-based conversation scenarios
+                Provide specialized unit-based conversation scenarios [DONE]
                 <ul>
                     <li>
-                        Provide grammatically-correct, on-topic responses
+                        Provide grammatically-correct, on-topic responses [DONE]
                     </li>
                     <li>
-                        Respond according to the unit scenario
+                        Respond according to the unit scenario [DONE]
                     </li>
                     <li>
-                        Provide grades for user responses
+                        Provide grades for user responses [DONE]
                     </li>
                 </ul>
             </li>
@@ -92,7 +130,7 @@
                         Store progress/grades
                     </li>
                     <li>
-                        Create custom flash cards/quiz questions
+                        Create custom flash cards/exercises
                     </li>
                 </ul>
             </li>
@@ -148,10 +186,9 @@
         </b>
     </h3>
     <p>
-        The core functionality of the conversations will be controlled by OpenAI's GPT API.
+        The core functionality of the conversations are controlled by OpenAI's GPT API.
         OpenAI provides a library in Python to make use of their language models; this is the perfect application of such models, as realistic conversational data is required in the use case of improving human language learning.
-        While we have determined the prompts required to tailor the model's functionality to our specific use cases, we have not yet implemented them programmatically via API calls.
-        This is, naturally, our top priority for Sprint 3.
+        The model has now been integrated with the chat framework and functions as intended, as shown in the demo video above.
         Unfortunately, the models are locked behind a slight paywall, but it is a small price to pay to meet our end goals.
     </p>
     <br>
@@ -167,10 +204,10 @@
         Navigation bars are located along the top of the screen, allowing the user to easily traverse the website to the desired page at any moment.
         The user can click on whichever unit they would like to begin learning and/or practicing.
         The main unit page is introductory.
-        At this point, the navigation bar adjusts to fit the unit content framework, presenting tabs including (but not limited to): a cross-language dictionary, the vocab and grammar of the unit, flash cards, quizzes, and the chat functionality.
+        At this point, the navigation bar adjusts to fit the unit content framework, presenting tabs including (but not limited to): a cross-language dictionary, the vocab and grammar of the unit, flash cards, exercises, and the chat functionality.
         The dictionary tab will include a sizeable cross-language dictionary, which the user will be able to search in both languages.
         The vocabulary tab includes only the vocab directly relevant to the currently-selected unit.
-        The grammar quiz will contain verbs and grammatical concepts that pertain to the topics covered in the unit.
+        The grammar exercises contain verbs and grammatical concepts that pertain to the topics covered in the unit.
         Flash cards provide an interactive way to test the user's command over the unit vocabulary.
         These keep track of the terms that the user has missed and provides an opportunity to review them again at the end of the list.
         Finally, the user can access the conversation tab.
@@ -181,6 +218,7 @@
         The grade can then be clicked to view specific grading details, broken down by spelling and grammar (and potentially coherence as well).
         There will be a short message explaining the reasoning behind the grades in each category.
         If a user does not fully understand the response sent (they are learning, after all), the translation can be viewed by simply hovering over the message.
+        Should the user not have the necessary keyboard package installed on their computer to make use of the chat functionality, they can click the keyboard icon located in the bottom-right corner of the chat window to display a built-in on-screen keyboard.
         At any point, one can select a different unit or section within the unit.
     </p>
     
